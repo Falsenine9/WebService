@@ -45,7 +45,7 @@ public class GetAndUpdateMemberResource {
     @Consumes("application/json")
     //@Produces("application/json")
     public Response updateProfile(@QueryParam("name") String name, @QueryParam("email") String email, @QueryParam("phone") String phone, @QueryParam("city") String city, @QueryParam("address") String address,
-    @QueryParam("securityQuestion")int securityQuestion, @QueryParam("securityAnswer") String securityAnswer, @QueryParam("age") int age, @QueryParam("income")int income) {
+    @QueryParam("securityQuestion")int securityQuestion, @QueryParam("securityAnswer") String securityAnswer, @QueryParam("age") int age, @QueryParam("income")int income, @QueryParam("passwordhash")String passwordhash) {
         try {
             //Class.forName("com.sql.jdbc.Driver");
             String connURL = "jdbc:mysql://localhost/islandfurniture-it07?user=root&password=12345";
@@ -63,6 +63,7 @@ public class GetAndUpdateMemberResource {
             ps.setInt(7,age);
             ps.setInt(8,income);
             ps.setString(9,email);
+            //ps.setString(10,passwordhash);
             int result = ps.executeUpdate();
             
             if (result > 0) {
